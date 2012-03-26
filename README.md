@@ -5,4 +5,4 @@
     $ git submodule update
 
 ## Create symbolic link
-    $ ./create_symlink.sh
+    $ ./setup.sh
