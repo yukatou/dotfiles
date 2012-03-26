@@ -1,4 +1,4 @@
-## First
+## Init setting
     $ git clone git@github.com:yukatou/dotfiles.git
     $ cd dotfiles
     $ git submodule init
