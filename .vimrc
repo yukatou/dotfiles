@@ -1,24 +1,7 @@
 set nocompatible
 
-"vundle
-filetype off
-set rtp+=~/.vim/vundle.git/
-call vundle#rc()
-Bundle 'git://github.com/Shougo/neocomplcache.git'
-Bundle 'git://github.com/Shougo/unite.vim.git'
-Bundle 'git://github.com/thinca/vim-ref.git'
-Bundle 'git://github.com/thinca/vim-quickrun.git'
-Bundle 'git://github.com/thinca/vim-template.git'
-Bundle 'git://github.com/scrooloose/nerdtree.git'
-Bundle 'git://github.com/scrooloose/syntastic.git'
-Bundle 'git://github.com/tomasr/molokai.git'
-Bundle 'git://github.com/Lokaltog/vim-powerline.git'
-Bundle 'git://github.com/Townk/vim-autoclose.git'
-Bundle 'git://github.com/vim-scripts/rails.vim.git'
-Bundle 'git://github.com/vim-scripts/sudo.vim.git'
-Bundle 'git://github.com/vim-scripts/eregex.vim.git'
-"Bundle 'git://github.com/kana/vim-smartchr.git'
-filetype plugin indent on     " required!
+" Bundle
+source ~/.vimrc.bundle
 
 " Color
 syntax on
@@ -44,7 +27,7 @@ set t_Co=256
 let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
 
 
-" NERFTree
+" NERDTree
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 autocmd VimEnter * nmap <C-e> :NERDTreeToggle<CR>
@@ -57,6 +40,16 @@ let g:NERDTreeQuitOnOpen=1
 map <c-l> gt
 map <c-h> gT
 
+" Nerd_Commenter
+let g:NERDCreateDefaultMappings=0
+let NERDSpaceDelims=1
+nmap <Leader> <Plug>NERDCommenterToggle
+vmap <Leader> <Plug>NERDCommenterToggle
+nmap <Leader>a <Plug>NERDCommenterAppend
+nmap <leader>9 <Plug>NERDCommenterToEOL
+vmap <Leader>s <Plug>NERDCommenterSexy
+vmap <Leader>b <Plug>NERDCommenterMinimal
+
 " quickrun
 let g:quickrun_config={'*': {'split':''}}
 set splitbelow
@@ -66,3 +59,8 @@ set splitright
 let g:syntastic_enable_signs=1
 let g:syntastic_enable_highlighting=1
 let g:syntastic_auto_loc_list=2
+
+" PHP
+let php_sql_query=1
+let php_htmlInStrings=1
+let php_folding = 1
