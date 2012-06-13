@@ -3,7 +3,7 @@ PS1="[${USER}@${HOST%%.*} %1~]%(!.#.$) "
 RPROMPT="%T"                      # 右側に時間を表示する
 setopt transient_rprompt          # 右側まで入力がきたら時間を消す
 setopt prompt_subst               # 便利なプロント
-#bindkey -e                        # emacsライクなキーバインド
+bindkey -e                        # emacsライクなキーバインド
 export LANG=ja_JP.UTF-8           # 日本語環境
 export EDITOR=vim                 # エディタはvim
 autoload -U compinit              # 強力な補完機能
