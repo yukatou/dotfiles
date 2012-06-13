@@ -1,6 +1,6 @@
 [user]
-  name = yukatou
-  email = yu.lets0226@gmail.com
+	name = yukatou
+	email = yu.lets0226@gmail.com
 [color]
   # colorの設定(以下のコマンドは自動で色つける)
   status = auto
