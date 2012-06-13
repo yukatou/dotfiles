@@ -1,6 +1,3 @@
-# PROMPT
-PS1="[${USER}@${HOST%%.*} %1~]%(!.#.$) " 
-RPROMPT="%T"                      # 右側に時間を表示する
 setopt transient_rprompt          # 右側まで入力がきたら時間を消す
 setopt prompt_subst               # 便利なプロント
 bindkey -e                        # emacsライクなキーバインド
@@ -34,6 +31,55 @@ bindkey "^N" history-beginning-search-forward-end
 alias ls="ls -aFG"
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 
+
+# Ctrl+wで､直前の/までを削除する｡
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+
+# VCS settings
+autoload -Uz vcs_info
+
+# gitのみ有効にする
+#zstyle ":vcs_info:*" enable git
+# commitしていない変更をチェックする
+zstyle ":vcs_info:git:*" check-for-changes true
+# gitリポジトリに対して、変更情報とリポジトリ情報を表示する
+zstyle ":vcs_info:git:*" formats "[%b]%c%u"
+# gitリポジトリに対して、コンフリクトなどの情報を表示する
+zstyle ":vcs_info:git:*" actionformats "[%b]%c%u<%a>"
+# addしていない変更があることを示す文字列
+zstyle ":vcs_info:git:*" unstagedstr "+"
+# commitしていないstageがあることを示す文字列
+zstyle ":vcs_info:git:*" stagedstr "*"
+
+
+# git：まだpushしていないcommitあるかチェックする
+my_git_info_push () {
+  if [ "$(git remote 2>/dev/null)" != "" ]; then
+    local head="$(git rev-parse HEAD)"
+    local remote
+    for remote in $(git rev-parse --remotes) ; do
+      if [ "$head" = "$remote" ]; then return 0 ; fi
+    done
+    # pushしていないcommitがあることを示す文字列
+    echo "<P>"
+  fi
+}
+
+# git：stashに退避したものがあるかチェックする
+my_git_info_stash () {
+  if [ "$(git stash list 2>/dev/null)" != "" ]; then
+    # stashがあることを示す文字列
+    echo "{s}"
+  fi
+}
+
+precmd() {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    psvar[1]=$vcs_info_msg_0_
+}
+
+PROMPT=$'%2F%n@%m%f %3F%~%f %1v\n%# '
 
 export PATH=/usr/local/bin:$PATH
 
