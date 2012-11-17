@@ -1,1 +1,1 @@
-/Users/yukatou/dotfiles/.vim
+/home/yukatou/dotfiles/.vim

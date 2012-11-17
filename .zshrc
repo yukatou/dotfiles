@@ -100,6 +100,7 @@ stopvm() {
 # rbenv
 if [ -e ~/.rbenv ]; then
   eval "$(rbenv init -)"
+  export PATH="$HOME/.rbenv/bin:$PATH"
 fi
 
 # nodebrew 
