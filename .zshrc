@@ -30,6 +30,7 @@ bindkey "^N" history-beginning-search-forward-end
 # alias
 alias ls="ls -aFG"
 alias be="bundle exec"
+alias pd="padrino"
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 
 
@@ -97,4 +98,17 @@ stopvm() {
 
 
 # rbenv
-eval "$(rbenv init -)"
+if [ -e ~/.rbenv ]; then
+  eval "$(rbenv init -)"
+fi
+
+# nodebrew 
+if [ -e ~/.nodebrew ]; then
+  export PATH=$HOME/.nodebrew/current/bin:$PATH
+fi
+
+# Initialization for FDK command line tools.Tue Sep 25 23:54:34 2012
+FDK_EXE="/Users/yukatou/bin/FDK/Tools/osx"
+PATH=${PATH}:"/Users/yukatou/bin/FDK/Tools/osx"
+export PATH
+export FDK_EXE
