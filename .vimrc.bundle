@@ -8,6 +8,7 @@ Bundle 'git://github.com/Shougo/vimproc.git'
 Bundle 'git://github.com/Shougo/neocomplcache.git'
 Bundle 'git://github.com/Shougo/neosnippet.git'
 Bundle 'git://github.com/taichouchou2/vim-rsense.git'
+Bundle 'git://github.com/pekepeke/titanium-vim'
 
 " railsサポート
 Bundle 'taichouchou2/vim-rails'
