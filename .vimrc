@@ -8,10 +8,12 @@ call neobundle#rc(expand('~/.vim/bundle/'))  " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My Bundles here:
-NeoBundle 'tomasr/molokai'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'tomasr/molokai' " カラーテーマ
 
 " You can specify revision/branch/tag.
 NeoBundle 'Shougo/vimproc', {
@@ -30,9 +32,13 @@ filetype plugin indent on
 " this will conveniently prompt you to install them.
 NeoBundleCheck
 
+""
+" 設定項目
+""
 
-" Color
 syntax on
+
+" Colorテーマの設定
 colorscheme molokai
 let g:molokai_original=0
 
@@ -51,3 +57,12 @@ set laststatus=2
 set encoding=utf-8
 set t_Co=256
 set listchars=eol:$,tab:>\ 
+
+""
+" VimFilter
+""
+
+" netrwを置き換える 
+let g:vimfiler_as_default_explorer = 1
+" ファイルを開くときタブで開く
+let g:vimfiler_edit_action = 'tabopen'
