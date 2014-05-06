@@ -229,8 +229,8 @@ stopvm() {
 
 # rbenv
 if [ -e ~/.rbenv ]; then
-  eval "$(rbenv init -)"
-  export PATH="$HOME/.rbenv/bin:$PATH"
+#  eval "$(rbenv init -)"
+#  export PATH="$HOME/.rbenv/bin:$PATH"
 fi
 
 # nodebrew 
@@ -243,3 +243,5 @@ FDK_EXE="/Users/yukatou/bin/FDK/Tools/osx"
 PATH=${PATH}:"/Users/yukatou/bin/FDK/Tools/osx"
 export PATH
 export FDK_EXE
+
+export ARCHFLAGS="-Wno-error=unused-command-line-argument-hard-error-in-future"
