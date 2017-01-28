@@ -1,10 +1,10 @@
 #!/bin/bash
 
-
-DOT_FILES=(.gitconfig .gitignore .inputrc .vim .vimrc .vimrc.bundle .tmux.conf .zshrc .gemrc .oh-my-zsh)
-
+DOT_FILES=(.gitconfig .gitignore .inputrc .vimrc .zshrc .zshenv .tmux.conf)
 for file in ${DOT_FILES[@]}
 do
   echo "create symbolic link => $HOME/$file"
   ln -Fsi $HOME/dotfiles/$file $HOME/$file
 done
+
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"

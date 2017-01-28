@@ -1,68 +1,64 @@
-if has('vim_starting')
-  set nocompatible " Be iMproved
-  set runtimepath+=~/.vim/neobundle.vim/ " Required:
-endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))  " Required:
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
+  endif
 
-NeoBundleFetch 'Shougo/neobundle.vim'
+" Required:
+set runtimepath+=/Users/yukatou/.cache/dein/repos/github.com/Shougo/dein.vim
 
-" My Bundles here:
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler.vim'
-NeoBundle 'Lokaltog/vim-powerline'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'tomasr/molokai' " カラーテーマ
+" Required:
+call dein#begin('/Users/yukatou/.cache/dein')
+
+" Let dein manage dein
+" Required:
+call dein#add('Shougo/dein.vim')
+
+" Add or remove your plugins here:
+call dein#add('Shougo/neosnippet.vim')
+call dein#add('Shougo/neosnippet-snippets')
 
 " You can specify revision/branch/tag.
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'windows' : 'make -f make_mingw32.mak',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
+call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+
+" color
+call dein#add('tomasr/molokai')
+
+" Required:
+call dein#end()
 
 " Required:
 filetype plugin indent on
+syntax enable
 
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
 
-""
-" 設定項目
-""
+"End dein Scripts-------------------------
 
-syntax on
 
-" Colorテーマの設定
-colorscheme molokai
-let g:molokai_original=0
+
+syntax on "コードの色分け
+"colorscheme molokai
+
 
 " 全角スペースを視覚化
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=white
 match ZenkakuSpace /　/
 
 " Set
-set number 
-set ts=2 sw=2
-set softtabstop=2
-set expandtab
-set autoindent
-set smartindent
-set laststatus=2
-set encoding=utf-8
-set t_Co=256
-set listchars=eol:$,tab:>\ 
-
-""
-" VimFilter
-""
-
-" netrwを置き換える 
-let g:vimfiler_as_default_explorer = 1
-" ファイルを開くときタブで開く
-let g:vimfiler_edit_action = 'tabopen'
+set autoindent "新しい行のインデントを現在行と同じにする
+set expandtab "タブで挿入する文字をスペースに
+set number "行番号を表示する
+set title "編集中のファイル名を表示
+"set cursorline "カーソルのある行にアンダーラインを引く
+set showmatch "括弧入力時の対応する括弧を表示
+set tabstop=2 "インデントをスペース4つ分に設定
+set shiftwidth=2 "自動インデントの幅
+set smartindent "オートインデント
+set smarttab "新しい行を作った時に高度な自動インデント
+set clipboard=unnamed,autoselect "OSのクリッポボードと連携
+set matchpairs& matchpairs+=<:> "対応カッコに＜＞を追加
+set backspace=eol,indent,start
